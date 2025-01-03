@@ -1,0 +1,30 @@
+<div class="card">
+    <p-table
+        [value]="reservations"
+        [paginator]="true"
+        [rows]="5"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [rowsPerPageOptions]="[5, 10, 20]"
+    >
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:25%">ID</th>
+                <th style="width:25%">Lugar</th>
+                <th style="width:25%">Fecha</th>
+                <th style="width:25%">Hora de llegada</th>
+                <th style="width:25%">Hora de salida</th>
+                <th style="width:25%">Total pago</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-reservation>
+            <tr>
+                <td>{{ reservation.reservationId }}</td>
+                <td>{{ reservation.placeName }}</td>
+                <td>{{ reservation.reservationDate}}</td>
+                <td>{{ reservation.checkInHour }}</td>
+                <td>{{ reservation.checkOutHour }}</td>
+                <td>{{ reservation.totalPayment }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

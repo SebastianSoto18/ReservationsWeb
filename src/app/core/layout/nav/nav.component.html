@@ -1,12 +1,14 @@
-<div class="app-header w-full m-0 p-0 flex flex-row">
-    <div class="flex align-items-center justify-content-center">
-      <a href="https://www.unimagdalena.edu.co" class="border-none" target='_blank' rel="noopener">
-        <img src="https://cdn.unimagdalena.edu.co/images/escudo/bg_dark/72.png"
-          alt="Escudo de la Universidad del Magdalena" height="35" class="mr-2 ml-1" />
-      </a>
-    </div>
-    <div class="flex align-items-center justify-content-left text-center md:text-leftmx-2">
-      <span class="text-white font-semibold text-xs md:text-base">
-        Reservas</span>
-    </div>
+<p-menubar>
+  <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+    <h3 style="margin: 0;">Hola, {{ user?.name }}</h3>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-bars"
+      class="p-button-rounded p-button-text"
+      (click)="menu.toggle($event)">
+    </button>
   </div>
+</p-menubar>
+
+<p-menu #menu [popup]="true" [model]="menuItems"></p-menu>
