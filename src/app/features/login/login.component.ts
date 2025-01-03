@@ -44,7 +44,6 @@ export class LoginComponent {
       this.susbcriptions.push(
         this.authService.authUser(this.form.controls.email.value!, this.form.controls.password.value!).subscribe({
             next: (token) => {
-              console.log(token);
               this.sessionStorageService.setItem('token', token);
               this.loaderService.hideLoading();
               this.router.navigate(['/home']);

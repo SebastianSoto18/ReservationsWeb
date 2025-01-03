@@ -21,14 +21,22 @@ export class ReservationsService {
 
     return this.httpClient.get<ReservationData[]>(url, { headers: this.getHeaders() });
   }
+
+  public createReservation(placeId : number, checkInHour : string, checkOutHour : string, reservationDate : string, totalPayment : number) : Observable<number> {
+    return this.httpClient.post<number>(environment.ReservationsApi + 'Reservation' ,{ placeId, checkInHour, checkOutHour, reservationDate, totalPayment }, { headers: this.getHeaders() });
+  }
+
+  public deleteReservation(id : number) : Observable<any> {
+    return this.httpClient.delete(environment.ReservationsApi + `Reservation/${id}`, { headers: this.getHeaders() });
+  }
   
-    getHeaders(): HttpHeaders {
-      return new HttpHeaders().set('Content-Type', 'application/json')
+  getHeaders(): HttpHeaders {
+    return new HttpHeaders().set('Content-Type', 'application/json')
       .set('Authorization', `Bearer ${this.getToken()}`);
-    }
+  }
   
-    getToken(): string | null {
-      const rawToken = this.sessionService.getItem<string>('token');
-      return rawToken ? rawToken.replace(/^"|"$/g, '') : null;
-    }
+  getToken(): string | null {
+    const rawToken = this.sessionService.getItem<string>('token');
+    return rawToken ? rawToken.replace(/^"|"$/g, '') : null;
+  }
 }
